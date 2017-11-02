@@ -4,7 +4,7 @@ import path from 'path';
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json', '.tsx', '.ts']
   },
   devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
   entry: [
@@ -13,7 +13,7 @@ export default {
     'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=true',
     'babel-polyfill',
-    path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.
+    path.resolve(__dirname, 'src/index') // Defining path seems necessary for this to work consistently on Windows machines.
   ],
   target: 'web',
   output: {
@@ -39,6 +39,11 @@ export default {
   ],
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

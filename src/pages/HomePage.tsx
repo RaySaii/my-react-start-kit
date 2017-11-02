@@ -1,12 +1,11 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { H1 } from '../styles/index';
 
 const HomePage = () => {
   return (
     <div>
-      <h1>React is great!!!</h1>
-
+      <H1>React is great!!!</H1>
       <h2>Get Started</h2>
       <ol>
         <li>Review the <Link to="/Todo">Todo</Link></li>

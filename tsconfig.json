@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-//    "outDir": "build/dist",
+    "outDir": "./dist/",
     "module": "esnext",
     "target": "es5",
     "lib": [
@@ -11,7 +11,7 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
+//    "rootDir": "src",
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
@@ -26,6 +26,7 @@
     "node_modules",
     "dist",
     "docs",
-    "tests"
+    "tests",
+    "tools"
   ]
 }

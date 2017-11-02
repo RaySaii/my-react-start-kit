@@ -13,7 +13,7 @@ const GLOBALS = {
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json', '.tsx', '.ts']
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: ['babel-polyfill',path.resolve(__dirname, 'src/index')],
@@ -61,6 +61,11 @@ export default {
   ],
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
