@@ -16,7 +16,20 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json', '.tsx', '.ts']
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
-  entry: ['babel-polyfill',path.resolve(__dirname, 'src/index')],
+  entry: {
+    index: path.resolve(__dirname, 'src/index'),
+    vendor: [
+      'babel-polyfill',
+      'react', 'react-dom',
+      'react-router-dom',
+      'react-redux',
+      'redux',
+      'react-router-redux',
+      'redux-saga',
+      'styled-components',
+      'lodash'
+    ]
+  },
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -27,6 +40,19 @@ export default {
 
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor', 'runtime'],
+      minChunks: Infinity,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      // ( 公共chunk(commnons chunk) 的名称)
+      name: "commons",
+      // ( 公共chunk 的文件名)
+      filename: "commons.[chunkhash:4].js",
+      // (模块必须被 3个 入口chunk 共享)
+      minChunks: 3
+    }),
 
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),

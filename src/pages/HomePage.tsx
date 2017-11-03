@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { H1 } from '../styles/index';
+import _ from 'lodash';
 
+_.isEqual(1, 1)
 const HomePage = () => {
   return (
     <div>

@@ -2,6 +2,9 @@
 import React from 'react';
 import { Switch, NavLink, Route } from 'react-router-dom';
 import asyncImport from './AsyncImport';
+// import HomePage from '../pages/HomePage';
+// import TodoPage from '../pages/TodoPage';
+// import SagaPage from '../pages/SagaPage';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
